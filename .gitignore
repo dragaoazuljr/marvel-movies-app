@@ -6,6 +6,7 @@ tmp
 /out-tsc
 
 # dependencies
+/package-lock.json
 node_modules
 
 # IDEs and editors
@@ -39,3 +40,6 @@ testem.log
 Thumbs.db
 
 .angular
+
+#env
+.env

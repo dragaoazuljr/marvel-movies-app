@@ -1,0 +1,15 @@
+<div class="comicList">
+  <h1>Marvel Comics</h1>
+  <div class="commicList__content">
+    <p-card
+      *ngFor="let comic of comics"
+      [header]="comic.title"
+      [subheader]="comic.description || ''"
+      [style]="{ width: '360px' }"
+    >
+      <ng-template pTemplate="header">
+        <img alt="Card" [src]="getComicImage(comic)" />
+      </ng-template>
+    </p-card>
+  </div>
+</div>
