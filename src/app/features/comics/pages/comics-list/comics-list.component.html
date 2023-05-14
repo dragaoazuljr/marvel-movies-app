@@ -1,15 +1,32 @@
 <div class="comicList">
-  <h1>Marvel Comics</h1>
-  <div class="commicList__content">
-    <p-card
-      *ngFor="let comic of comics"
-      [header]="comic.title"
-      [subheader]="comic.description || ''"
-      [style]="{ width: '360px' }"
-    >
-      <ng-template pTemplate="header">
-        <img alt="Card" [src]="getComicImage(comic)" />
-      </ng-template>
-    </p-card>
+  <div class="comicList__header">
+    <h1>Marvel Comics</h1>
+    <div>
+      <input
+        type="text"
+        pInputText
+        [(ngModel)]="title"
+        (keyup)="handleKeyUp($event)"
+        placeholder="Search by title"
+      />
+    </div>
+  </div>
+  <div class="comicList__content">
+    <a [routerLink]="['/comics', comic.id]" *ngFor="let comic of comics">
+      <p-card
+        [header]="comic.title"
+        [subheader]="comic.description || ''"
+        [style]="{ width: '330px' }"
+      >
+        <ng-template pTemplate="header">
+          <img
+            alt="Card"
+            [src]="getComicImage(comic)"
+            class="comicList__content-thumb"
+          />
+        </ng-template>
+        <p-chip [label]="comic.format" />
+      </p-card>
+    </a>
   </div>
 </div>

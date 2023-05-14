@@ -1,6 +1,17 @@
 .comicList {
-  &--content {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__content {
     display: flex;
     flex-wrap: wrap;
+    gap: 30px;
+
+    &-thumb {
+      max-heigth: 100px;
+    }
   }
 }

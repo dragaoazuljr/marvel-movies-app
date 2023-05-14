@@ -1,1 +1,44 @@
-<p>comics-detail works!</p>
+<div class="comicsDetail">
+  <div class="comicsDetail__header">
+    <img class="comicsDetail__header-thumb" [src]="getImage()" />
+    <div class="comicsDetail__header-details">
+      <h1>{{ comics?.title }}</h1>
+      <p>{{ comics?.description }}</p>
+      <p>Price: {{ price | currency : 'USD' }}</p>
+    </div>
+  </div>
+  <ng-template [ngIf]="characters">
+    <h2>Characters</h2>
+    <p-carousel [value]="characters" [numVisible]="3" [numScroll]="3">
+      <ng-template let-char pTemplate="item">
+        <p-card
+          [header]="char.name"
+          [subheader]="char.description"
+          [style]="{ 'max-width': '350px' }"
+        >
+          <ng-template pTemplate="header">
+            <img
+              alt="Ilustration of {{ char.name }}"
+              [src]="char?.thumbnail.path + '.' + char?.thumbnail.extension"
+            />
+          </ng-template>
+        </p-card>
+      </ng-template>
+    </p-carousel>
+  </ng-template>
+  <ng-template [ngIf]="creators">
+    <h2>Creators</h2>
+    <p-carousel [value]="creators" [numVisible]="3">
+      <ng-template let-char pTemplate="item">
+        <p-card [header]="char.fullName" [style]="{ 'max-width': '350px' }">
+          <ng-template pTemplate="header">
+            <img
+              alt="Photo of {{ char.name }}"
+              [src]="char?.thumbnail.path + '.' + char?.thumbnail.extension"
+            />
+          </ng-template>
+        </p-card>
+      </ng-template>
+    </p-carousel>
+  </ng-template>
+</div>

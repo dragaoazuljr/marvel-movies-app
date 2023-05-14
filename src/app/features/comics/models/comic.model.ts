@@ -1,134 +1,197 @@
 export interface Comic {
-	code: number;
-	status: string;
-	copyright: string;
-	attributionText: string;
-	attributionHTML: string;
-	etag: string;
-	data: Data;
+  code: number;
+  status: string;
+  copyright: string;
+  attributionText: string;
+  attributionHTML: string;
+  etag: string;
+  data: Data;
 }
 
 export interface Data {
-	offset: number;
-	limit: number;
-	total: number;
-	count: number;
-	results: Result[];
+  offset: number;
+  limit: number;
+  total: number;
+  count: number;
+  results: Result[];
 }
 
 export interface Result {
-	id: number;
-	digitalId: number;
-	title: string;
-	issueNumber: number;
-	variantDescription: VariantDescription;
-	description: null | string;
-	modified: string;
-	isbn: string;
-	upc: string;
-	diamondCode: string;
-	ean: string;
-	issn: string;
-	format: Format;
-	pageCount: number;
-	textObjects: any[];
-	resourceURI: string;
-	urls: URL[];
-	series: Series;
-	variants: Series[];
-	collections: any[];
-	collectedIssues: any[];
-	dates: DateElement[];
-	prices: Price[];
-	thumbnail: Thumbnail;
-	images: Thumbnail[];
-	creators: Characters;
-	characters: Characters;
-	stories: Characters;
-	events: Characters;
+  id: number;
+  digitalId: number;
+  title: string;
+  issueNumber: number;
+  variantDescription: VariantDescription;
+  description: null | string;
+  modified: string;
+  isbn: string;
+  upc: string;
+  diamondCode: string;
+  ean: string;
+  issn: string;
+  format: Format;
+  pageCount: number;
+  textObjects: any[];
+  resourceURI: string;
+  urls: URL[];
+  series: Series;
+  variants: Series[];
+  collections: any[];
+  collectedIssues: any[];
+  dates: DateElement[];
+  prices: Price[];
+  thumbnail: Thumbnail;
+  images: Thumbnail[];
+  creators: Characters;
+  characters: Characters;
+  stories: Characters;
+  events: Characters;
 }
 
 export interface Characters {
-	available: number;
-	collectionURI: string;
-	items: Item[];
-	returned: number;
+  available: number;
+  collectionURI: string;
+  items: Item[];
+  returned: number;
 }
 
 export interface Item {
-	resourceURI: string;
-	name: string;
-	role?: Role;
-	type?: ItemType;
+  resourceURI: string;
+  name: string;
+  role?: Role;
+  type?: ItemType;
 }
 
 export enum Role {
-	Colorist = 'colorist',
-	ColoristCover = 'colorist (cover)',
-	Editor = 'editor',
-	Inker = 'inker',
-	Letterer = 'letterer',
-	PainterCover = 'painter (cover)',
-	PencilerCover = 'penciler (cover)',
-	Writer = 'writer',
+  Colorist = 'colorist',
+  ColoristCover = 'colorist (cover)',
+  Editor = 'editor',
+  Inker = 'inker',
+  Letterer = 'letterer',
+  PainterCover = 'painter (cover)',
+  PencilerCover = 'penciler (cover)',
+  Writer = 'writer',
 }
 
 export enum ItemType {
-	Cover = 'cover',
-	InteriorStory = 'interiorStory',
+  Cover = 'cover',
+  InteriorStory = 'interiorStory',
 }
 
 export interface DateElement {
-	type: DateType;
-	date: string;
+  type: DateType;
+  date: string;
 }
 
 export enum DateType {
-	DigitalPurchaseDate = 'digitalPurchaseDate',
-	FocDate = 'focDate',
-	OnsaleDate = 'onsaleDate',
-	UnlimitedDate = 'unlimitedDate',
+  DigitalPurchaseDate = 'digitalPurchaseDate',
+  FocDate = 'focDate',
+  OnsaleDate = 'onsaleDate',
+  UnlimitedDate = 'unlimitedDate',
 }
 
 export enum Format {
-	Comic = 'Comic',
+  Comic = 'Comic',
 }
 
 export interface Thumbnail {
-	path: string;
-	extension: Extension;
+  path: string;
+  extension: Extension;
 }
 
 export enum Extension {
-	Jpg = 'jpg',
+  Jpg = 'jpg',
 }
 
 export interface Price {
-	type: PriceType;
-	price: number;
+  type: PriceType;
+  price: number;
 }
 
 export enum PriceType {
-	PrintPrice = 'printPrice',
+  PrintPrice = 'printPrice',
 }
 
 export interface Series {
-	resourceURI: string;
-	name: string;
+  resourceURI: string;
+  name: string;
 }
 
 export interface URL {
-	type: URLType;
-	url: string;
+  type: URLType;
+  url: string;
 }
 
 export enum URLType {
-	Detail = 'detail',
-	Purchase = 'purchase',
-	Reader = 'reader',
+  Detail = 'detail',
+  Purchase = 'purchase',
+  Reader = 'reader',
 }
 
 export enum VariantDescription {
-	Empty = '',
-	Variant = 'Variant',
+  Empty = '',
+  Variant = 'Variant',
+}
+
+export interface Characters {
+  code: number;
+  status: string;
+  copyright: string;
+  attributionText: string;
+  attributionHTML: string;
+  etag: string;
+  data: CharactersData;
+}
+
+export interface CharactersData {
+  offset: number;
+  limit: number;
+  total: number;
+  count: number;
+  results: CharactersResult[];
+}
+
+export interface CharactersResult {
+  id: number;
+  name: string;
+  fullName: string;
+  description: string;
+  modified: string;
+  thumbnail: Thumbnail;
+  resourceURI: string;
+  comics: CharactersComics;
+  series: CharactersComics;
+  stories: Stories;
+  events: CharactersComics;
+  urls: URL[];
+}
+
+export interface CharactersComics {
+  available: number;
+  collectionURI: string;
+  items: ComicsItem[];
+  returned: number;
+}
+
+export interface ComicsItem {
+  resourceURI: string;
+  name: string;
+}
+
+export interface Stories {
+  available: number;
+  collectionURI: string;
+  items: StoriesItem[];
+  returned: number;
+}
+
+export interface StoriesItem {
+  resourceURI: string;
+  name: string;
+  type: Type;
+}
+
+export enum Type {
+  Cover = 'cover',
+  InteriorStory = 'interiorStory',
 }
